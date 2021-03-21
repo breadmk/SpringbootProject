@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
 	h2{
 		margin: auto;
@@ -17,14 +18,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 <!-- include summernote-ko-KR -->
 <script src="/static/summernote/summernote-ko-KR.js"></script>
-<script src="/static/js/insert.js"></script>
+<script src="/static/js/update.js"></script>
 <div class="container">
   <h2>학원등록</h2>
-<form method="post" action="/board/insertOk">
+<form method="post" action="/board/updateOk">
+<input type="hidden" value="${param.no}" name="no">
   <table class="table">
       <tr>
         <td>학원명</td>
         <td>
+        <input type="hidden" value="${dto.name}" id="selected">
          <select name="name" id="selbox">
         	<option value="쌍용교육센터">쌍용교육센터</option>
         	<option value="솔데스크">솔데스크</option>
@@ -39,19 +42,20 @@
       </tr>
       <tr>
         <td>위치</td>
-         <td><input type="text" class="form-control" name="location"></td>
+         <td><input type="text" class="form-control" name="location" value="${dto.location}"></td>
       </tr>
       <tr>
         <td>강의명</td>
-         <td><input type="text" class="form-control" name="process"></td>
+         <td><input type="text" class="form-control" name="process" value="${dto.process}"></td>
       </tr>
       <tr>
         <td>강사명</td>
-         <td><input type="text" class="form-control" name="teacher"></td>
+         <td><input type="text" class="form-control" name="teacher" value="${dto.process}"></td>
       </tr>
        <tr>
         <td>별점</td>
          <td>
+         <input type="hidden" value="${dto.score}" id="score">
          <input type="radio" class="optradio" name="score" value="1">★
          <input type="radio" class="optradio" name="score" value="2">★★
          <input type="radio" class="optradio" name="score" value="3">★★★
@@ -61,14 +65,18 @@
       </tr>
       <tr>
       	<td>상세정보</td>
-      	<td><textarea id="summernote" name="content"></textarea></td>
+      	<td><textarea id="summernote" name="content">${dto.content}</textarea></td>
       </tr>
        <tr>
         <td>본인확인번호</td>
-         <td><input type="password" class="form-control" name="pwd"></td>
+         <td><input type="password" class="form-control" name="pwd">
+         <c:if test="${param.chk==1}">
+         <span>비밀번호가 틀렸습니다.</span>
+         </c:if>
+         </td>
       </tr>
       <tr>
-      	<td colspan="2" align="center"><input type="submit" value="등록"></td>
+      	<td colspan="2" align="center"><input type="submit" value="수정"></td>
       </tr>
   </table>
   </form>

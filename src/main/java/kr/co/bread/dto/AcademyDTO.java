@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class AcademyDTO {
 	
 	private int no,score;
-	private String location, name, content, process, writedate,teacher;
+	private String location, name, content, process, writedate,teacher,pwd;
 	
 	
 }

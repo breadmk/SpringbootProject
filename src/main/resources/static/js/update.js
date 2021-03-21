@@ -15,4 +15,9 @@ $(document).ready(function() {
 			$("#directInput").hide();
 		}
 	});
+	var name = $("#selected").val();
+	$("#selbox option[value="+name+"]").attr("selected","selected");
+	
+	var score = $("#score").val();
+	$('input:radio[name=score]:input[value='+score+']').prop("checked",true);
 	});
