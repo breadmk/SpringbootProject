@@ -11,4 +11,10 @@ public class MemberController {
 		
 		return "/member/signup";
 	}
+	
+	@RequestMapping("/member/signOk")
+	public String signOk() {
+		
+		return "/member/signOk";
+	}
 }
