@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import kr.co.bread.config.mk.PrincipalDetail;
+import kr.co.bread.config.mk.PrincipalDetailService;
 import kr.co.bread.dto.MemberDTO;
 import kr.co.bread.mapper.MemberMapper;
 
@@ -12,7 +14,7 @@ public class MemberService {
 
 	@Autowired
 	private MemberMapper memberMapper;
-
+	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 	
@@ -24,6 +26,5 @@ public class MemberService {
 		memberMapper.join(dto);
 		
 		return 1;
-		
 	}
 }

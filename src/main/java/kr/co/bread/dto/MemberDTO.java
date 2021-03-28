@@ -9,9 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MemberDTO {
 	
-	public MemberDTO(int value, int i) {
-		// TODO Auto-generated constructor stub
-	}
 	private int mno;
 	private String id,pw,name,phone,birth,gender,zipcode,addr,addr_detail,email,mtype,writedate;
 

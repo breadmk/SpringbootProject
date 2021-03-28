@@ -75,7 +75,7 @@ let index = {
                 document.getElementById('signUpUserCompanyAddressDetail').value = data.jibunAddress; */
             }
          }).open();
-	}
+	},
 }
 
 index.init()

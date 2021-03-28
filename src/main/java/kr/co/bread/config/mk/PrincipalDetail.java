@@ -2,18 +2,25 @@ package kr.co.bread.config.mk;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import kr.co.bread.dto.MemberDTO;
 
 public class PrincipalDetail implements UserDetails{
 
 	private MemberDTO member;
+	private String id = "ddd";
 	
 	public PrincipalDetail(MemberDTO member) {
-		this.member = member;
+		this.member=member;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	@Override
@@ -57,4 +64,6 @@ public class PrincipalDetail implements UserDetails{
 		collertors.add(()->{return "MTYPE_"+member.getMtype();});
 		return collertors;
 	}
+	
+	
 }

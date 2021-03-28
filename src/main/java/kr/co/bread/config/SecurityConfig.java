@@ -12,11 +12,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import kr.co.bread.config.mk.PrincipalDetailService;
 
-// Bean 등록 : 스프링 컨테이너에서 객체를 관리할 수 있게 해주는 것
-// 아래 3개는 세트.
-@Configuration // 빈등록(Ioc 관리)
-@EnableWebSecurity //시큐리티필터 추가 = 스프링 시큐리티가 활성화가 되어있다면 그 설정은 이 파일에서 하겠다. || 시큐리티 필터가 등록이 된다.
-@EnableGlobalMethodSecurity(prePostEnabled = true) // 특정 주소로 접근을 하면 권한 및 인증을 미리 체크 한다는 뜻.  
+@Configuration 
+@EnableWebSecurity 
+@EnableGlobalMethodSecurity(prePostEnabled = true)  
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
@@ -48,7 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.and()
 				.formLogin()	// 로그인이 필요한 페이지는
 				.loginPage("/member/login") //이쪽으로 자동으로 연결해준다.
-				.loginProcessingUrl("/member/loginProc") //스프링 시큐리티가 해당 주소로 오는 요청을 가로채서 대신 로그인 해준다.
+				.loginProcessingUrl("/member/loginOk") //스프링 시큐리티가 해당 주소로 오는 요청을 가로채서 대신 로그인 해준다.
+				.usernameParameter("id")
+				.passwordParameter("pw")
 				.defaultSuccessUrl("/"); //로그인 완료(정상)시 가는 주소 redirect 같은 느낌.
 	}
 }

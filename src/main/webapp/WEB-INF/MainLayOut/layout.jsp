@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,6 +71,9 @@ article {
 <!-- 개별 jsp의 head 태그안에 있는 css, js를 넣어준다. -->
 <sitemesh:write property='head' />
 </head>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
 <body>
 	<header>
 		<nav class="navbar navbar-inverse">
@@ -89,10 +93,23 @@ article {
 						<li><a href="/image/list">이미지</a></li>
 					</ul>
 					<!-- 오른쪽에 위치하는 메뉴바 -->
-					<ul class="nav navbar-nav navbar-right">
-							<li><a href="/member/signup"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
-							<li><a href="/member/login"><span	class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					
+					<c:choose>
+					 <c:when test="${empty principal}">
+					 <ul class="nav navbar-nav navbar-right">
+					 	<li><a href="/member/signup"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
+						<li><a href="/member/login"><span	class="glyphicon glyphicon-log-in"></span> Login</a></li>
 					</ul>
+					 </c:when>
+					<c:otherwise>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/board/insert"><span class="glyphicon"></span>✍글쓰기</a></li>
+						<li><a href="/member/form"><span class="glyphicon"></span>👩‍💻회원정보</a></li>
+						<li><a href="/logout"><span	class="glyphicon"></span>🔌로그아웃</a></li>
+					</ul>
+					</c:otherwise>
+					</c:choose>
+							
 				</div>
 			</div>
 		</nav>

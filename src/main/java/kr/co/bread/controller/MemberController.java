@@ -1,6 +1,9 @@
 package kr.co.bread.controller;
 
 import java.io.PrintWriter;
+import java.net.http.HttpRequest;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.bread.config.mk.PrincipalDetail;
+import kr.co.bread.config.mk.PrincipalDetailService;
 import kr.co.bread.dto.MemberDTO;
 import kr.co.bread.mapper.MemberMapper;
 import kr.co.bread.service.MemberService;
@@ -22,7 +27,10 @@ public class MemberController {
 	
 	@Autowired
 	MemberService memberService;
-
+	
+	@Autowired
+	PrincipalDetailService service; 
+	
 	@RequestMapping("/member/signup")
 	public String singup() {
 		
