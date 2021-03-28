@@ -80,7 +80,7 @@ article {
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/index">MK-Mall</a>
+					<a class="navbar-brand" href="/">MK-Mall</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">

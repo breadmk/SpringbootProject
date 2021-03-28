@@ -47,7 +47,7 @@
 		</div>
 		<div class="field mt5 mb5" id="errMsg"></div>
 		<div class="field">
-			<a href="/index"><input type="button" value="취소" title="취소" alt="취소" class="termsBtn mr5" /></a>
+			<a href="/"><input type="button" value="취소" title="취소" alt="취소" class="termsBtn mr5" /></a>
 			<input type="submit" value="확인" title="확인" alt="확인" class="termsBtn" id="temsBtn" />
 		</div>
 	</fieldset>
