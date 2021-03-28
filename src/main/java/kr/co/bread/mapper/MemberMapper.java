@@ -3,6 +3,7 @@ package kr.co.bread.mapper;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import kr.co.bread.dto.MemberDTO;
 
@@ -14,4 +15,7 @@ public interface MemberMapper {
 			" #{dto.phone,jdbcType=VARCHAR},#{dto.birth,jdbcType=VARCHAR},#{dto.gender,jdbcType=VARCHAR},#{dto.zipcode,jdbcType=VARCHAR},#{dto.addr,jdbcType=VARCHAR}," +
 			" #{dto.addr_detail,jdbcType=VARCHAR},#{dto.email,jdbcType=VARCHAR},#{dto.mtype,jdbcType=VARCHAR},sysdate)")
 	int join(@Param("dto") MemberDTO dto);
+	
+	@Select("select * from member where id=#{param1}")
+	MemberDTO getId(String id);
 }

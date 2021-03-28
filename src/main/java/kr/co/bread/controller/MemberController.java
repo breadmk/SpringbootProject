@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.bread.dto.MemberDTO;
 import kr.co.bread.mapper.MemberMapper;
+import kr.co.bread.service.MemberService;
 
 
 @Controller
@@ -18,6 +19,9 @@ public class MemberController {
 	
 	@Autowired
 	MemberMapper memberMapper;
+	
+	@Autowired
+	MemberService memberService;
 
 	@RequestMapping("/member/signup")
 	public String singup() {
@@ -35,9 +39,14 @@ public class MemberController {
 	@PostMapping("/member/joinOk")
 	public void joinOk(@RequestBody MemberDTO dto, PrintWriter out) {
 		System.out.println(dto);
-		dto.setMtype("USER");
-		memberMapper.join(dto);
+		memberService.회원가입(dto);
 		out.print("dd");
+	}
+	
+	@RequestMapping("/member/login")
+	public String login() {
+		
+		return "/member/login";
 	}
 	
 }
